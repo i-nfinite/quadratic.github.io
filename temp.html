@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+</head>
+<link rel="stylesheet" type="text/css">
+<style>  body{
+    margin: 0 auto; background-color: #FFF5EF;
+}
+.rect1{
+    height: 90px; background-color:#000000; 
+  color:#32CD32;
+  font-size:40px;
+    align-self: center; 
+    padding: 20px; border-radius: 10px; margin-left: 10px; margin-right: 10px;
+    box-shadow: 1px 1px 5px 2px white,-5px -5px 5px -5px white;
+    text-align: center; position: relative; top: 10px;
+}
+#logo{
+    height:68px; width:82px; align-self: center; position:relative;
+    top: -62%;
+
+}
+.qzbox{
+    height: 520px;  background-color: skyblue; width:80%; position:relative; max-width: 800px;
+    margin: 0 auto; top: 45px; border-radius:20px; border:5px solid black;
+}
+.quiz{
+    height:40px; background-color: yellow; width: 55%; max-width: 160px; border-radius: 50px;
+    border:5px solid black; position: relative; top: -25px; font-size: 24pt;
+}
+.qbox{
+    height:30%; background-color: transparent; width: 90%; position: relative;
+    top:-8px; text-align: left; color: black; font-size: 20pt; 
+}
+tr,td{
+    padding:2px;
+}
+#ot{
+    width: 85%;height: 50%; position: relative; top:8%;
+}
+.option{
+        height:100%; width: 100%; position: relative; left: 0%; border-radius: 10px; text-align: left; 
+         outline: none; 
+         font-size: 16pt; cursor: pointer; border-color: transparent;
+}
+.option:hover{
+    background-color: #FFD700;
+}
+#loginform{
+    height: 85%; width: 90%; background-color: skyblue; position:relative; top: -80%; margin: 0 auto;
+}
+#contactform{
+    position: relative;top: 5%; font-size: 16pt;
+}
+#start{
+    width: 50%; height: 40px; border-radius: 20px; border-color: transparent; outline: none; cursor: pointer; font-size:15pt;
+}
+#start:hover{
+    width: 60%; font-size: 18pt; background-color: black; color: #7CFC00; transition: 0.5s;
+}
+#welcomenote{
+    font-size: 20pt; font-family: 'Bungee Inline', cursive;
+
+}
+#namebox,#agebox{
+    outline: none; background-color: transparent;  border-color:transparent;
+    border-bottom:1px solid ; border-radius: 5px;  padding: 1px; font-size: 18pt; width: 90%;
+}
+#namebox:focus,#agebox:focus{
+    border-bottom: 1px solid white; background-color: transparent;
+}
+@keyframes rotate{
+    0%{transform:scaleZ(5px);}
+    90%{transform:scaleZ(50px);}
+    100%{transform:scaleZ(10px);}
+}
+</style>
+<script  type="text/javascript" >
+window.onload= function() {
+ var qbox=document.getElementById("qbox");
+ var opt1=document.getElementById("opt1");
+ var opt2=document.getElementById("opt2");
+ var opt3=document.getElementById("opt3");
+ var opt4=document.getElementById("opt4");
+ var loginform=document.getElementById("loginform");
+ var qzbox=document.getElementById("qzbox");
+}
+
+var questions= new Array("Jawaharlal Nehru attended the congress session for the first time in 1912.It held in:","The viceroy who introduced Budget system in India:","A seed is a ripened----:","Which of the following plants helps nitrogen fixation?","P.T Usha reached the final of an Olympic event in the Los Angels Olympic in:","10 men or 30 boys can do a work in 12 days then time taken to complete the same work by 10 men and 15 boys:","A train crosses a platform of length 100m is 30 seconds and a man in 15 seconds.Then the length of train is;","Complete the series:FAG,GAF,HAI,IAH,_?","The angle between both hands of a clock at 10:30 will be;","Which is the simplest aromatic hydrocarbon?")
+ var opa=new Array("Bankipur","Canning","Ovary","Beans","1984","6days","100m","HAL","165°","Ethane");          //option A array
+ var opb=new Array("Surat","Dufferin","Flower","Wheat","1980","7days","110m","JAK","115°","Acetylene");   //option B array
+ var opc=new Array("Faizpur","Mayo","Gynoecium","Rice","1988","8days","120m","HAK","135°","Benzene");             //option C array
+ var opd=new Array("Kolkata","Curzon","Ovule","Tomato","NOTA","10days","125m","JAI","125°","Naphthalene");   //option D array
+ var rta=new Array("a","a","d","a","a","c","a","b","c","c"); //right answer
+
+function startquiz()
+  {  var qzbox=document.getElementById("qzbox");
+    qzbox.removeChild(loginform);
+    show();
+  }
+ function a(){ if(rta[i]=="a"){counter++;  } i++; if(i==10){ score();} show();}
+ function b(){ if(rta[i]=="b"){counter++;  } i++; if(i==10){ score();} show();}
+ function c(){ if(rta[i]=="c"){counter++;  } i++; if(i==10){ score();} show();}
+ function d(){ if(rta[i]=="d"){counter++;  } i++; if(i==10){ score();} show();}
+ var i=0; var counter=0;
+ function show()
+    {  //alert("show function");
+       var qzbox=document.getElementById("qzbox");      qbox.innerHTML="Q"+(i+1)+":  "+ questions[i];
+      opt1.value=" A:  "+opa[i];
+      opt2.value=" B:  "+opb[i];
+      opt3.value=" C:  "+opc[i];
+      opt4.value=" D:  "+opd[i];
+    }
+ function score()
+   { //alert("Your score is "+counter);
+     var optiontable=document.getElementById("ot");
+     opt1.parentNode.removeChild(opt1);
+     opt2.parentNode.removeChild(opt2);
+     opt3.parentNode.removeChild(opt3);
+     opt4.parentNode.removeChild(opt4);
+     qzbox.removeChild(qbox);
+     qzbox.removeChild(optiontable);
+     
+      if(counter==10)     { var exp="PERFECTION!!!";}
+      else if(counter>7)  { var exp="VERY GOOD!!!";}
+      else if(counter==7) { var exp="YOU'RE ALMOST THERE!!!";}
+      else if(counter<7)  { var exp="BETTER LUCK NEXT TIME!!!";}
+     
+     var scoreline1e=document.createElement("p"); 
+     var scoreline1c=document.createTextNode("YOUR SCORE IS "+counter+"  OUT OF 10 :   "+exp);
+     scoreline1e.appendChild(scoreline1c); 
+     scoreline1e.style.color="white";
+     scoreline1e.style.fontSize="18pt";
+     scoreline1e.style.fontFamily="Permanent Marker, cursive"; 
+     qzbox.appendChild(scoreline1e);
+   }
+</script>
+<body>
+ <div class="rect1">SSC/PSC MOCK TEST-1</div>
+ <form class="form" id="form">
+ <div class="qzbox" id="qzbox" align="center">
+     <div class="quiz">MOCK-1</div>
+     <div class="qbox" id="qbox"></div>
+     <table align="center" id="ot">
+         <tr><td><input class="option" id="opt1" type="button" name="opt1" onclick="a()"></td></tr>
+         <tr><td><input class="option" id="opt2" type="button" name="opt2" onclick="b()"></td></tr>
+         <tr><td><input class="option" id="opt3" type="button" name="opt3" onclick="c()"></td></tr>
+         <tr><td><input class="option" id="opt4" type="button" name="opt4" onclick="d()"></td></tr>
+     </table>
+  <div class="welcome" id="loginform">
+    
+    <table id="contactform">
+    <tr><td colspan="2"><hr></td></tr>
+    <tr> 
+         <td>MINI MOCK TEST FOR SSC CHSL/MTS</td>
+         
+    </tr>
+    <tr><td colspan="2"><hr></td></tr>
+    <tr><td align="center" colspan="2"><input type="submit" name="submit" value="START" id="start" onclick="startquiz()"></td></tr>    
+    </table>
+      
+  </div>
+ </div> 
+</form>
+ <div class="socialrect">
+  
+ </div>
+</body>
+</html>
